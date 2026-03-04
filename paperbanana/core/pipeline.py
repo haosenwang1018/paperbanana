@@ -293,9 +293,11 @@ class PaperBananaPipeline:
         logger.info("Phase 1: Retrieval")
         retrieval_start = time.perf_counter()
         candidates = self.reference_store.get_all()
-        candidates, retrieval_mode, external_candidate_ids = (
-            await self._resolve_retrieval_candidates(input, candidates)
-        )
+        (
+            candidates,
+            retrieval_mode,
+            external_candidate_ids,
+        ) = await self._resolve_retrieval_candidates(input, candidates)
         if retrieval_mode == "external_only":
             examples = candidates[: self.settings.num_retrieval_examples]
         else:

@@ -210,9 +210,7 @@ class PlannerAgent(BaseAgent):
 
             data = response.content
             if len(data) > self._MAX_REMOTE_IMAGE_BYTES:
-                raise ValueError(
-                    f"remote image exceeds {self._MAX_REMOTE_IMAGE_BYTES} byte limit"
-                )
+                raise ValueError(f"remote image exceeds {self._MAX_REMOTE_IMAGE_BYTES} byte limit")
 
         return Image.open(BytesIO(data)).convert("RGB")
 
@@ -261,6 +259,7 @@ class PlannerAgent(BaseAgent):
                 return clean, ratio
             logger.warning("Planner returned invalid ratio", ratio=ratio)
         return text.strip(), None
+
     _REMOTE_IMAGE_TIMEOUT_SECONDS = 10.0
     _MAX_REMOTE_IMAGE_BYTES = 5 * 1024 * 1024
     _LOCAL_HOSTNAMES = {"localhost", "localhost.localdomain"}

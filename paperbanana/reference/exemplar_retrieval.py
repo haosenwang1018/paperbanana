@@ -191,16 +191,11 @@ class ExternalExemplarRetriever:
                 or ""
             ),
             image_path=str(
-                item.get("image_path")
-                or item.get("thumbnail_url")
-                or item.get("image_url")
-                or ""
+                item.get("image_path") or item.get("thumbnail_url") or item.get("image_url") or ""
             ),
             score=score,
             structure_hints=(
-                item.get("structure_hints")
-                or item.get("node_edge_tags")
-                or item.get("hints")
+                item.get("structure_hints") or item.get("node_edge_tags") or item.get("hints")
             ),
         )
 

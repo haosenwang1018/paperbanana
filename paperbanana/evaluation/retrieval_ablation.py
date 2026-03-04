@@ -244,9 +244,7 @@ class RetrievalAblationRunner:
 
         return summary
 
-    async def run(
-        self, input_data: GenerationInput, *, top_k_values: list[int]
-    ) -> AblationReport:
+    async def run(self, input_data: GenerationInput, *, top_k_values: list[int]) -> AblationReport:
         if any(v < 1 for v in top_k_values):
             raise ValueError("All top-k values must be >= 1")
         if not self.base_settings.exemplar_retrieval_endpoint:
